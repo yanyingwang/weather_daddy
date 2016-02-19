@@ -7,4 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
-lib/config.rb
+/lib/config.rb
+/log/
