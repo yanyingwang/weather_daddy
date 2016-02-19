@@ -24,7 +24,7 @@ class WeatherDaddy
       int_to_day_of_week Time.now.wday
     end
 
-    def deliver_today
+    def deliver_today_normal
       sendmail("今日(#{day_of_week_today})天气", today_txt)
     end
 
@@ -46,6 +46,12 @@ class WeatherDaddy
 
     def deliver_alert
       sendmail(alert_title, alert_content)
+    end
+
+    def deliver_today
+      deliver_today_normal
+      sleep 10
+      deliver_alert
     end
 
   end
