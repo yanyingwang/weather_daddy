@@ -35,11 +35,11 @@ every :day, at: '7:00 pm' do
 end
 
 
-every :day, at: '7:01 pm' do
+every :day, at: '7:05 pm' do
   rake 'deliver_tomorrow'
 end
 
-every :day, at: '7:02 pm' do
+every :day, at: '7:10 pm' do
   rake 'deliver_others'
 end
 
