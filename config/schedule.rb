@@ -5,7 +5,7 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :output, "logs/whenever.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -18,3 +18,28 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+
+
+every :day, at: '7:00 am' do
+  rake 'deliver_today'
+end
+
+
+every :day, at: '12:00 am' do
+  rake 'deliver_today'
+end
+
+every :day, at: '7:00 pm' do
+  rake 'deliver_today'
+end
+
+
+every :day, at: '7:01 pm' do
+  rake 'deliver_tomorrow'
+end
+
+every :day, at: '7:02 pm' do
+  rake 'deliver_others'
+end
+
