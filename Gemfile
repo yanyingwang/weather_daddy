@@ -4,10 +4,10 @@ source 'https://rubygems.org'
 
 
 gem 'activesupport'
-gem 'whenever'
+gem 'whenever', :require => false
 gem 'nokogiri'
 gem 'pony'
-
+gem 'rake'
 
 
 group :development do
