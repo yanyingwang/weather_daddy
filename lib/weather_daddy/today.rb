@@ -2,35 +2,39 @@
 class WeatherDaddy
   class << self
 
-    def html_today
+    def today_html
       Nokogiri::HTML(open("http://tianqi.2345.com/today-#{@area_id}.htm"))
     end
 
-    def arr_today
-      arr_today = []
+    def today_arr
+      today_arr = []
 
-      html_today.css(".time-main dl.day").each { |e| arr_today << e.content.gsub("今日", "") }
-      html_today.css(".time-main dl.night").each { |e| arr_today << e.content.gsub("今日", "") }
-      html_today.css("ul.parameter li").each { |e| arr_today << e.content if e.content =~ /(气温|风力|湿度|日出|日落)/ }
+      today_html.css(".time-main dl.day").each { |e| today_arr << e.content.gsub("今日", "") }
+      today_html.css(".time-main dl.night").each { |e| today_arr << e.content.gsub("今日", "") }
+      today_html.css("ul.parameter li").each { |e| today_arr << e.content if e.content =~ @regex_pars }
 
-      arr_today
+      today_arr
     end
 
-    def txt_today
-      arr_today.join("\n").gsub("：", " ")
+    def today_txt
+      today_arr.join("\n").gsub("：", " ")
     end
 
-    def mail_today
-      sendmail("今日天气", txt_today)
+    def day_of_week_today
+      int_to_day_of_week Time.now.wday
+    end
+
+    def today_deliver
+      sendmail("今日(#{day_of_week_today})天气", today_txt)
     end
 
 
-    def alert_title
-      html_today.css(".emoticon").text 
+    def today_alert_title
+      today_html.css(".emoticon").text
     end
 
-    def alert_content
-      links = html_today.css(".emoticon a#alertLink")
+    def today_alert_content
+      links = today_html.css(".emoticon a#alertLink")
 
       return alert_title if links.empty?
 
@@ -40,7 +44,7 @@ class WeatherDaddy
       html_alert.css(".news-text p").text
     end
 
-    def mail_alert
+    def today_alert_deliver
       sendmail(alert_title, alert_content)
     end
 
