@@ -26,7 +26,7 @@ every :day, at: '7:00 am' do
 end
 
 
-every :day, at: '12:00 am' do
+every :day, at: '12:00 pm' do
   rake 'deliver_today'
 end
 
