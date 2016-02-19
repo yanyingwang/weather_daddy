@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'pony'
 
 require 'active_support/all'
-require "weather_daddy/version"
+require 'weather_daddy/version'
 
 
 
@@ -51,6 +51,7 @@ end
 
 
 
+require 'config' if File.exist?(File.expand_path(File.dirname(File.dirname(__FILE__))) + '/lib/config.rb')
 require "weather_daddy/today"
 require "weather_daddy/tomorrow"
 require "weather_daddy/week"
