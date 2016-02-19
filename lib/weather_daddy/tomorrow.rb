@@ -23,11 +23,11 @@ class WeatherDaddy
 
 
     def day_of_week_tomorrow
-      int_to_day_of_week 1.days.later
+      int_to_day_of_week 1.days.from_now.wday
     end
 
-    def tomorrow_deliver
-      sendmail("明日(#{day_of_week_today})天气", tomorrow_txt)
+    def deliver_tomorrow
+      sendmail("明日(#{day_of_week_tomorrow})天气", tomorrow_txt)
     end
 
   end

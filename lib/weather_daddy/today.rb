@@ -24,16 +24,16 @@ class WeatherDaddy
       int_to_day_of_week Time.now.wday
     end
 
-    def today_deliver
+    def deliver_today
       sendmail("今日(#{day_of_week_today})天气", today_txt)
     end
 
 
-    def today_alert_title
+    def alert_title
       today_html.css(".emoticon").text
     end
 
-    def today_alert_content
+    def alert_content
       links = today_html.css(".emoticon a#alertLink")
 
       return alert_title if links.empty?
@@ -44,7 +44,7 @@ class WeatherDaddy
       html_alert.css(".news-text p").text
     end
 
-    def today_alert_deliver
+    def deliver_alert
       sendmail(alert_title, alert_content)
     end
 

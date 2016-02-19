@@ -15,7 +15,7 @@ class WeatherDaddy
     end
 
 
-    def others_deliver
+    def deliver_others
       others_arr.each do |day|
         day_arr = day.split("\n")
         sub = day_arr.shift.strip + "天气"
