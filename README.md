@@ -48,3 +48,8 @@ rake deliver_others
 使用如下命令可以更新crontab，自动发送天气短信：
 
     $ whenever -i
+
+
+
+##  最后，容朕秀一张效果图，可好？ - > -
+![list](https://raw.githubusercontent.com/yanyingwang/weather_daddy/master/screenshots/1.png)
