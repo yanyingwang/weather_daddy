@@ -1,36 +1,50 @@
 # WeatherDaddy
+孝敬省吃俭用的父母的天气预报短信通知程序。
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/weather_daddy`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
 
-## Installation
+## 说明和感谢
 
-Add this line to your application's Gemfile:
+本Gem的天气数据来源于[2345天气预报](http://tianqi.2345.com/)，如果您喜欢，欢迎下载他们的[手机APP软件](http://tianqi.2345.com/tianqiapp/)。本Gem仅供测试使用，如有侵犯您的权益，请联系作者删除。
 
-```ruby
-gem 'weather_daddy'
+
+
+## 使用前设置
+
+1. area_id获取：先登陆[2354天气预报网](http://tianqi.2345.com/)，找到您所需预报的天气区域ID，例如河南省新郑市的页面http://tianqi.2345.com/xinzheng/60687.htm ， 的area_id即为**60687**。
+2. QQ邮箱发邮件：您需要有一个QQ邮箱账号，用来发送邮件。
+3. 中国移动139邮箱开启全天邮件到短信通知。
+
+
+## 配置
+
+依次执行如下命令，注意修改`config.rb`文件的变量参数：
+
+```shell
+git clone https://github.com/yanyingwang/weather_daddy.git
+
+cd weather_daddy
+
+cat lib/config.rb <<EOF
+class WeatherDaddy
+  @recipient = "phone_num@139.com"
+  @username = "usrname"
+  @password = "password"
+  @area_id = "60687"  # 河南新郑
+end
+EOF
 ```
 
-And then execute:
+## 命令发送天气短信
+```shell
+rake deliver_today
+rake deliver_tomorrow
+rake deliver_others
+```
 
-    $ bundle
 
-Or install it yourself as:
+## crontab自动任务发送天气短信
 
-    $ gem install weather_daddy
+使用如下命令可以更新crontab，自动发送天气短信：
 
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/weather_daddy. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
+    $ whenever -i
