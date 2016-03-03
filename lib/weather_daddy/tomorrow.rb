@@ -18,7 +18,7 @@ class WeatherDaddy
     end
 
     def tomorrow_txt
-      tomorrow_arr.join("\n").gsub("：", "").gsub("风力", "")
+      tomorrow_arr.join("\n").gsub("：", "").gsub("风力 ", "")
     end
 
 
