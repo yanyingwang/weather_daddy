@@ -41,11 +41,15 @@ class WeatherDaddy
       link_alert = links.first.attributes["href"].value
       html_alert = Nokogiri::HTML(open("http://tianqi.2345.com/" + link_alert))
 
-      html_alert.css(".news-text p").text
+      content_arr = html_alert.css(".news-text p").text.split("：")
+      content_time = Time.new(*content_arr.first.match(/....年..月..日/).to_s.split(/[年月日]/))
+      content_text = content_arr.second
+
+      content_time.day == Time.now.day ? content_text : nil
     end
 
     def deliver_alert
-      sendmail(alert_title, alert_content)
+      sendmail(alert_title, alert_content) if alert_content
     end
 
     def deliver_today
