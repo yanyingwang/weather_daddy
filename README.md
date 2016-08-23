@@ -27,6 +27,8 @@ git clone https://github.com/yanyingwang/weather_daddy.git
 
 cd weather_daddy
 
+mkdir logs
+
 cat >> lib/config.rb <<EOF
 class WeatherDaddy
   @recipient = "phone_num@139.com"
