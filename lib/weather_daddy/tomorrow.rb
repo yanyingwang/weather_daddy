@@ -4,7 +4,7 @@ class WeatherDaddy
   class << self
 
     def tomorrow_html
-      Nokogiri::HTML(open("http://tianqi.2345.com/tomorrow-#{@area_id}.htm"))
+      Nokogiri::HTML(open("https://tianqi.2345.com/tomorrow-#{@area_id}.htm"))
     end
 
     def tomorrow_arr
