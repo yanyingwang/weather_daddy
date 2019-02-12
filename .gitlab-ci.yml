@@ -1,5 +1,6 @@
-
-heroku:
-  stage: deploy
+sms-deliver_today:
+  # only:
+    # - schedules
   script:
-    - git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/weather-daddy.git master
+    - bundle install
+    - bundle exec rake deliver_today

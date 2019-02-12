@@ -16,19 +16,28 @@
 1. area_id获取：先登陆[2354天气预报网](http://tianqi.2345.com/)，找到您所需预报的天气区域ID，例如河南省新郑市的页面 http://tianqi.2345.com/xinzheng/60687.htm 的area_id即为**60687**。
 2. QQ邮箱发邮件：您需要有一个QQ邮箱账号，用来发送邮件。
 3. 中国移动139邮箱开启全天邮件到短信通知。
-
-
-## 配置
-
-依次执行如下命令，注意修改`config.rb`文件的变量参数：
-
+4. pull code
 ```shell
 git clone https://github.com/yanyingwang/weather_daddy.git
 
 cd weather_daddy
 
 mkdir logs
+```
 
+
+## 配置
+两个方式配置：
+
+1. configure it via shell var:
+~~~shell
+WD_RECIPIENT="phone_num@139.com"
+WD_USERNAME="usrname"
+WD_PASSWORD="password"
+WD_AREA_ID="60687"  # 河南新郑
+~~~
+
+2. configure it via ruby file:
 cat >> lib/config.rb <<EOF
 class WeatherDaddy
   @recipient = "phone_num@139.com"
@@ -37,7 +46,7 @@ class WeatherDaddy
   @area_id = "60687"  # 河南新郑
 end
 EOF
-```
+
 
 ## 命令发送天气短信
 ```shell

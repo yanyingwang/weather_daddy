@@ -8,10 +8,10 @@ require 'weather_daddy/version'
 
 
 class WeatherDaddy
-  @recipient = "*@139.com"
-  @username = ""
-  @password = ""
-  @area_id = "60687"  # 河南新郑
+  @recipient = ENV['WD_RECIPIENT'] #  "*@139.com"
+  @username = ENV['WD_USERNAME']
+  @password = ENV["WD_PASSWORD"]
+  @area_id = ENV["WD_AREA_ID"] || "60687"  # 河南新郑
   #@area_id = "58362"  # 上海
 
   @regex_pars = /(风力|降水概率|湿度|紫外线强度|日出|日落)/
