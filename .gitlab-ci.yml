@@ -8,15 +8,15 @@
 sms:deliver_today:
   # only:
     # - schedules
-  image: "ruby:2.3"
+  # image: "ruby:2.3"
   cache:
     paths:
       - vendor/ruby/
   before_script:
-    - apt-get update -qq && apt-get install -y telnet curl
+    # - apt-get update -qq && apt-get install -y telnet curl
     - ruby -v
     - bundle install -j $(nproc) --path vendor
     - ls -lah vendor
   script:
-    - telnet smtp.qq.com 25
-    # - bundle exec rake deliver_today
+    # - telnet smtp.qq.com 25
+    - bundle exec rake deliver_today
