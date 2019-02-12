@@ -1,0 +1,5 @@
+
+heroku:
+  stage: deploy
+  script:
+    - git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/weather-daddy.git master
