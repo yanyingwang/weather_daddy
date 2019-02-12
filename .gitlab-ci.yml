@@ -15,9 +15,8 @@ deliver_today:
   before_script:
     # - apt-get update -qq && apt-get install -y telnet curl
     - ruby -v
-    - bundle install -j $(nproc) --path vendor/gems
-    - ls -lah vendor
-    - ls -lah vendor/gems
+    - bundle install -j $(nproc) --path vendor
+    - ls -lahR vendor/*
   script:
     # - telnet smtp.qq.com 587
     - bundle exec rake deliver_today
@@ -32,9 +31,8 @@ deliver_tomorrow:
       - vendor
   before_script:
     - ruby -v
-    - bundle install -j $(nproc) --path vendor/gems
-    - ls -lah vendor
-    - ls -lah vendor/gems
+    - bundle install -j $(nproc) --path vendor
+    - ls -lahR vendor/*
   script:
     - bundle exec rake deliver_tomorrow
 
@@ -48,8 +46,7 @@ deliver_others:
       - vendor
   before_script:
     - ruby -v
-    - bundle install -j $(nproc) --path vendor/gems
-    - ls -lah vendor
-    - ls -lah vendor/gems
+    - bundle install -j $(nproc) --path vendor
+    - ls -lahR vendor/*
   script:
     - bundle exec rake deliver_others
