@@ -39,7 +39,8 @@ class WeatherDaddy
                   :subject => subject,
                   :body => content,
                   :via_options => { :address        => 'smtp.qq.com',
-                                    :port           => '25',
+                                    :port           => '587',
+                                    :enable_starttls_auto => true,
                                     :user_name      => @username,
                                     :password       => @password,
                                     :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
