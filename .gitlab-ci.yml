@@ -1,6 +1,21 @@
-sms-deliver_today:
+
+# heroku:
+#   stage: deploy
+#   script:
+#     - git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/weather-daddy.git master
+
+
+sms:deliver_today:
   # only:
     # - schedules
+  image: "ruby:2.3"
+  cache:
+    paths:
+      - vendor/ruby/
+  before_script:
+    - ruby -v
+    - bundle install -j $(nproc) --path vendor
+    - ls -lah vendor
   script:
-    - bundle install
+    - telnet smtp.qq.com 25
     - bundle exec rake deliver_today
