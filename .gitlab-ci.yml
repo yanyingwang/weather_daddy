@@ -5,52 +5,23 @@
 #     - git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/weather-daddy.git master
 
 
-image: "ruby:2.5"
-cache:
-  paths:
-    - vendor
 
-check_cache:
-  before_script:
-    - apt-get update -qq && apt-get install -y telnet tree
-    - ruby -v
-    - bundle install -j $(nproc) --path vendor
-  script:
-    - tree vendor
-
-
-deliver_today:
+deliver_sms:
+  # image: "ruby:2.5"
   only:
     - schedules
-    - $WHICH_DAY == "today"
+  # cache:
+  #   paths:
+  #     - vendor
   before_script:
     - ruby -v
-    - bundle install -j $(nproc) --path vendor
+    - bundle install
+    # - bundle install -j $(nproc) --path vendor
+    - ls -lah ./
     - ls -lah vendor
   script:
     - bundle exec rake deliver_today
-
-
-
-deliver_tomorrow:
-  only:
-    - schedules
-    - $WHICH_DAY == "tomorrow"
-  before_script:
-    - ruby -v
-    - bundle install -j $(nproc) --path vendor
-    - ls -lah vendor
-  script:
+    - sleep 200
     - bundle exec rake deliver_tomorrow
-
-
-deliver_others:
-  only:
-    - schedules
-    - $WHICH_DAY == "others"
-  before_script:
-    - ruby -v
-    - bundle install -j $(nproc) --path vendor
-    - ls -lah vendor
-  script:
+    - sleep 400
     - bundle exec rake deliver_others
