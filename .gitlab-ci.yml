@@ -1,24 +1,9 @@
 
-# heroku:
-#   stage: deploy
-#   script:
-#     - git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/weather-daddy.git master
-
-
-
-deliver_sms:
-  # image: "ruby:2.5"
+deliver-sms:
   only:
     - schedules
-  # cache:
-  #   paths:
-  #     - vendor
   before_script:
-    - ruby -v
     - bundle install
-    # - bundle install -j $(nproc) --path vendor
-    - ls -lah ./
-    - ls -lah vendor
   script:
     - bundle exec rake deliver_today
     - sleep 200
