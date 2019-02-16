@@ -1,4 +1,3 @@
-
 class WeatherDaddy
   class << self
 
@@ -16,7 +15,7 @@ class WeatherDaddy
       other_texts.each do |text|
         subject = text.match(/.*\)/).to_s.strip + "天气"
         sendmail(subject, text)
-        sleep 10
+        sleep 30
       end
     end
 
