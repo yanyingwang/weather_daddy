@@ -1,4 +1,3 @@
-
 deliver-sms:
   only:
     - schedules
@@ -6,7 +5,7 @@ deliver-sms:
     - bundle install
   script:
     - bundle exec rake deliver_today
-    - sleep 200
+    - sleep 100
     - bundle exec rake deliver_tomorrow
-    - sleep 400
+    - sleep 200
     - bundle exec rake deliver_others
