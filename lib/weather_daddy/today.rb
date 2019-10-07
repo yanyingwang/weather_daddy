@@ -17,7 +17,7 @@ class WeatherDaddy
     end
 
     def today_txt
-      today_arr.join("\n").gsub("：", " ").gsub("风力 ", "")
+      today_arr.join("\n").gsub("：", " ").gsub("风力 ", "").gsub("风向 ", "")
     end
 
     def day_of_week_today

@@ -65,7 +65,7 @@ rake deliver_others
 
 ## 通过gitlab-ci的schedule来自动发送
 1. 到repo的`settings`->`ci`->`Environment variables`的页面上设置设置好变量`WD_AREA_ID` `WD_PASSWORD` `WD_RECIPIENT` `WD_USERNAME`的值。
-2. 到repo的`CI/CD`->`Schedules`的`New Schedule`建立好任务。
+2. 到repo的`CI/CD`->`Schedules`的`New Schedule`建立好任务，并且传入variable： `TZ`值例如为`Asia/Shanghai`。
 3. 如果需要，请修改定制化repo根目录下的`.gitlab-ci.yml`文件内容。
 
 
