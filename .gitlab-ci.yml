@@ -3,7 +3,6 @@ deliver-sms:
     - schedules
   before_script:
     - bundle install
-    - TZ=Asia/Shanghai
   script:
     - date
     - bundle exec rake deliver_today

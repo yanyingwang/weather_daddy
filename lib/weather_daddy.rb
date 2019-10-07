@@ -14,7 +14,7 @@ class WeatherDaddy
   @area_id = ENV["WD_AREA_ID"] || "60687"  # 河南新郑
   #@area_id = "58362"  # 上海
 
-  @regex_pars = /(风力|降水概率|湿度|紫外线强度|日出|日落|风向)/
+  @regex_pars = /(风力|降水概率|湿度|紫外线强度|日出|日落|风向|当前气温)/
 
   class << self
     private
@@ -36,7 +36,7 @@ class WeatherDaddy
                   :to => @recipient,
                   :via => :smtp,
                   :subject => subject,
-                  :body => content,
+                  :body => "\n" + content,
                   :via_options => { :address        => 'smtp.qq.com',
                                     :port           => '587',
                                     :enable_starttls_auto => true,
