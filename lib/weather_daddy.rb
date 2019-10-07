@@ -14,8 +14,7 @@ class WeatherDaddy
   @area_id = ENV["WD_AREA_ID"] || "60687"  # 河南新郑
   #@area_id = "58362"  # 上海
 
-  @regex_pars = /(风力|降水概率|湿度|紫外线强度|日出|日落)/
-
+  @regex_pars = /(风力|降水概率|湿度|紫外线强度|日出|日落|风向)/
 
   class << self
     private

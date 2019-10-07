@@ -36,7 +36,13 @@ class WeatherDaddy
     def alert_content
       links = today_html.css(".emoticon a#alertLink")
 
-      return alert_title if links.empty?
+      if links.empty?
+        return [ today_html.css("ul.lifeindex li")[1].content,
+                 today_html.css("ul.lifeindex li")[2].content,
+                 today_html.css("ul.lifeindex li")[3].content,
+                 today_html.css("ul.lifeindex li")[4].content,
+                 today_html.css("ul.lifeindex li")[6].content, ].join("").gsub(" ", ":").gsub("。", "\n")
+      end
 
       link_alert = links.first.attributes["href"].value
       html_alert = Nokogiri::HTML(open("http://tianqi.2345.com/" + link_alert))
