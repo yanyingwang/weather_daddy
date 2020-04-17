@@ -1,3 +1,7 @@
+<img src="https://raw.githubusercontent.com/yanyingwang/weather_daddy/master/favicon.png" alt="favicon" width="120"/>
+
+
+
 # WeatherDaddy
 孝敬省吃俭用的父母的天气预报短信通知程序。
 
