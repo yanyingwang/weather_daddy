@@ -1,9 +1,9 @@
 name: main
 on:
-  push:
-    branches: [ master ]
-  # schedule:
-  #   - cron: '0 22 * * *' # this is utc time, it would be time+8 in China.
+  # push:
+  #   branches: [ master ]
+  schedule:
+    - cron: '0 22 * * *' # this is utc time, it would be time+8 in China.
 
 jobs:
   main:
@@ -17,7 +17,7 @@ jobs:
     - name: bundle
       run: |
         gem install bundler
-        bundle install
+        bundle install --jobs 4 --retry 3
     - name: send-sms
       run: |
         bundle exec rake deliver_today
