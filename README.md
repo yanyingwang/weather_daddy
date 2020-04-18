@@ -34,8 +34,8 @@ mkdir logs
 1. configure it via shell var:
 ~~~shell
 WD_RECIPIENT="phone_num@139.com"
-WD_USERNAME="usrname"
-WD_PASSWORD="password"
+WD_USERNAME="usrname" # @qq.com
+WD_PASSWORD="password" # username@qq.com's password
 WD_AREA_ID="60687"  # 河南新郑
 ~~~
 
