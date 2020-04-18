@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+# source "https://gems.ruby-china.com"
 
 gem 'activesupport'
 gem 'whenever', :require => false

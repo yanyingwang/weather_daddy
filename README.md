@@ -65,7 +65,9 @@ rake deliver_others
 
     $ whenever -i
 
-
+## 通过github action的schedule来自动发送
+1. 到repo的`Settings` -> `Secrets`的页面上增加`WD_AREA_ID` `WD_PASSWORD` `WD_RECIPIENT` `WD_USERNAME`这几个变量。
+2. 可以修改`.github/workflows/deliver-sms.yml`中schedule的时间来自定义发送时间。
 
 ## 通过gitlab-ci的schedule来自动发送
 1. 到repo的`settings`->`ci`->`Environment variables`的页面上设置设置好变量`WD_AREA_ID` `WD_PASSWORD` `WD_RECIPIENT` `WD_USERNAME`的值。
