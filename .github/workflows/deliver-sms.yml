@@ -1,7 +1,9 @@
 name: main
 on:
-  schedule:
-    - cron: '0 22 * * *' # this is utc time, it would be time+8 in China.
+  push:
+    branches: [ master ]
+  # schedule:
+  #   - cron: '0 22 * * *' # this is utc time, it would be time+8 in China.
 
 jobs:
   main:
