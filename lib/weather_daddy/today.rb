@@ -21,7 +21,7 @@ class WeatherDaddy
     end
 
     def day_of_week_today
-      int_to_day_of_week Time.now.wday
+      int_to_day_of_week Time.now.getlocal("+08:00").wday
     end
 
     def deliver_today_normal
