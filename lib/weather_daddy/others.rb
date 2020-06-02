@@ -2,7 +2,7 @@ class WeatherDaddy
   class << self
 
     def other_htmls
-      Nokogiri::HTML(open("https://tianqi.2345.com/xinzheng/#{@area_id}.htm"))
+
     end
 
     def other_texts

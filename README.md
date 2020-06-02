@@ -54,9 +54,10 @@ EOF
 
 ## 命令发送天气短信
 ```shell
-rake deliver_today
-rake deliver_tomorrow
-rake deliver_others
+rake deliver_all
+# rake deliver_today
+# rake deliver_tomorrow
+# rake deliver_others
 ```
 
 

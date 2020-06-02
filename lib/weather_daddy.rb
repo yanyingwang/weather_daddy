@@ -54,8 +54,7 @@ end
 
 require 'config' if File.exist?(File.expand_path(File.dirname(File.dirname(__FILE__))) + '/lib/config.rb')
 
+require "weather_daddy/allinone"
 require "weather_daddy/today"
 require "weather_daddy/tomorrow"
 require "weather_daddy/others"
-
-

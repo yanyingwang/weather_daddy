@@ -6,6 +6,10 @@ require_relative 'lib/weather_daddy'
 
 # usage example: $ rake deliver_today
 
+task :deliver_all do
+  WeatherDaddy.deliver_all
+end
+
 task :deliver_today do
   WeatherDaddy.deliver_today
 end

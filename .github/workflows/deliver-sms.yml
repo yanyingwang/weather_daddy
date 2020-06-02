@@ -20,11 +20,12 @@ jobs:
         bundle install --jobs 4 --retry 3
     - name: send-sms
       run: |
-        bundle exec rake deliver_today
-        sleep 100
-        bundle exec rake deliver_tomorrow
-        sleep 200
-        bundle exec rake deliver_others
+        bundle exec rake deliver_all
+        # bundle exec rake deliver_today
+        # sleep 100
+        # bundle exec rake deliver_tomorrow
+        # sleep 200
+        # bundle exec rake deliver_others
       env:
         WD_AREA_ID: ${{ secrets.WD_AREA_ID }}
         WD_PASSWORD: ${{ secrets.WD_PASSWORD }}
