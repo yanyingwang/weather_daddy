@@ -27,7 +27,7 @@ class WeatherDaddy
     end
 
     def deliver_tomorrow
-      sendmail("明日(#{day_of_week_tomorrow})天气", tomorrow_txt)
+      sendmail("明日天气", tomorrow_txt)
     end
 
   end

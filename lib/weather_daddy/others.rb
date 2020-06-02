@@ -15,7 +15,7 @@ class WeatherDaddy
       other_texts.each do |text|
         subject = text.match(/.*\)/).to_s.strip + "天气"
         content = text.split("\n").map(&:strip).join("\n").squeeze
-        sendmail(subject, content)
+        sendmail("天气", content)
         sleep 30
       end
     end

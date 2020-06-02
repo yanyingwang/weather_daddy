@@ -31,3 +31,4 @@ jobs:
         WD_PASSWORD: ${{ secrets.WD_PASSWORD }}
         WD_RECIPIENT: ${{ secrets.WD_RECIPIENT }}
         WD_USERNAME: ${{ secrets.WD_USERNAME }}
+        TZ: Asia/Shanghai
