@@ -12,6 +12,7 @@ class WeatherDaddy
   @username = ENV['WD_USERNAME']
   @password = ENV["WD_PASSWORD"]
   @area_id = ENV["WD_AREA_ID"] || "60687"  # 河南新郑
+  @area_pinyin = ENV["WD_AREA_PINYIN"] || "xinzheng"  # 河南新郑
   #@area_id = "58362"  # 上海
 
   @regex_pars = /(风力|降水概率|湿度|紫外线强度|日出|日落|风向|当前气温)/
@@ -49,12 +50,9 @@ class WeatherDaddy
   end
 end
 
-
-
-
 require 'config' if File.exist?(File.expand_path(File.dirname(File.dirname(__FILE__))) + '/lib/config.rb')
 
 require "weather_daddy/allinone"
-require "weather_daddy/today"
-require "weather_daddy/tomorrow"
-require "weather_daddy/others"
+# require "weather_daddy/today"
+# require "weather_daddy/tomorrow"
+# require "weather_daddy/others"
