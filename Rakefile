@@ -14,6 +14,8 @@ task :deliver_all do
   WeatherDaddy.sendmail_livetips
   sleep 10
   WeatherDaddy.sendmail_alert
+  sleep 10
+  WeatherDaddy.sendmail_sun
 end
 
 

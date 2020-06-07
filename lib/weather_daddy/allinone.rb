@@ -16,18 +16,20 @@ class WeatherDaddy
     # ==================================================
     # ==================================================
     # ==================================================
-    def alert_today
-      alert_subject = html.css(".today-detail ul.real-air li")[1].content
-      alert_link = "http://tianqi.2345.com/" + html.css(".today-detail ul.real-air li a")[1].attributes['href'].value
-
-      page = Nokogiri::HTML(open(alert_link))
-      alert_detail = page.css(".wea-warning").text.split("\n").map{ |e| e.strip }.reject(&:blank?)
-      alert_message = page.css(".warn-stand").text.strip
-      [ alert_subject,
-        alert_message,
-        { title: alert_detail[0],
-          time: alert_detail[1],
-          content: alert_detail[2] } ]
+    def alerts_today
+      oos = html.css(".today-detail ul.real-air li").select { |e| e.content =~ /预警/ }
+      oos.map do |e|
+        subject = e.content
+        link = "http://tianqi.2345.com/" + e.css("a").first.attributes['href'].value
+        page = Nokogiri::HTML(open(link))
+        detail = page.css(".wea-warning").text.split("\n").map{ |e| e.strip }.reject(&:blank?)
+        message = page.css(".warn-stand").text.strip
+        { subject: subject,
+          message: message,
+          detail: { title: detail[0],
+                    time: detail[1],
+                    content: detail[2] } }
+      end
     end
 
     def wea_today
@@ -65,6 +67,10 @@ class WeatherDaddy
             to_h
     end
 
+    def sun_today
+      html_1d.css(".hours24-data-th-right").text.strip.split("\n").map { |e| e.gsub(" ", "") }
+    end
+
     # ==================================================
     # ==================================================
     # ==================================================
@@ -76,12 +82,18 @@ class WeatherDaddy
     end
 
     def sendmail_alert
-      subject, body, detail = alert_today
-      sendmail("今日#{subject}", body)
+      alerts_today.each do |e|
+        subject, body = e[:subject], e[:message]
+        sendmail("今日#{subject}", body)
+      end
     end
 
     def sendmail_wea_trend
-      sendmail("未来天气趋势", wea_trend)
+      sendmail("今日未来天气趋势", wea_trend)
+    end
+
+    def sendmail_sun
+      sendmail("今日太阳", sun_today.join(" "))
     end
 
     def sendmail_weas
