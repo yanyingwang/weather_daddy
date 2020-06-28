@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 # source "https://gems.ruby-china.com"
 
+gem 'open_uri_redirections'
 gem 'activesupport'
 gem 'whenever', :require => false
 gem 'nokogiri'
