@@ -10,12 +10,12 @@ task :deliver_all do
   WeatherDaddy.sendmail_weas
   sleep 10
   WeatherDaddy.sendmail_wea_trend
-  sleep 10
-  WeatherDaddy.sendmail_livetips
-  sleep 10
-  WeatherDaddy.sendmail_alert
-  sleep 10
-  WeatherDaddy.sendmail_sun
+  # sleep 10
+  # WeatherDaddy.sendmail_livetips
+  # sleep 10
+  # WeatherDaddy.sendmail_alert
+  # sleep 10
+  # WeatherDaddy.sendmail_sun
 end
 
 
